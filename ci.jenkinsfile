@@ -1,3 +1,5 @@
+#!groovy
+
 String buildShell = "${env.buildShell}"
 
 pipeline{
@@ -7,7 +9,7 @@ pipeline{
        stage("build"){
          steps{
             script{
-               mvnHome = tool 'maven'
+               mvnHome = tool "maven"
                sh "${mvnHome}/bin/mvn ${buildShell}"
             }
          }
@@ -16,8 +18,8 @@ pipeline{
       stage("antbuild"){
          steps{
             script{
-              antHome = tool 'ANT'
-               sh "${antHome}/bin/ant ${buildShell}"
+              antHome = tool "ANT"
+              sh "${antHome}/bin/ant ${buildShell}"
             }
          }
       }
@@ -25,7 +27,7 @@ pipeline{
       stage("NpmBuild"){
          steps{
             script{
-               npmHome = tool 'NPM'
+               npmHome = tool "NPM"
                sh "${npmHome}/bin/npm ${buildShell}"
             }
          }
