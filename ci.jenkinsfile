@@ -6,7 +6,12 @@ pipeline{
    agent { node { label "master"}}
    
    stages{
-       stage("build"){
+      
+      stage("clean") {
+        cleanWs()
+      }
+      
+       stage("build") {
          steps{
             script{
                mvnHome = tool "maven"
